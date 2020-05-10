@@ -34,7 +34,16 @@ class StudyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func acceptedStudy(_ sender: Any) {
+//    @IBAction func acceptedStudy(_ sender: Any) {
+//        print("my dick")
+//        delegate?.didTapAcceptStudy(index: index)
+//    }
+//    @IBAction func buttonPressed(_ sender: UIButton) {
+//        print("my dick")
+//        delegate?.didTapAcceptStudy(index: index)
+//    }
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        print("my dick")
         delegate?.didTapAcceptStudy(index: index)
     }
 }

@@ -28,8 +28,12 @@ class ViewController: UIViewController {
 //        let order = Order(context: managedContext)
 //        let order2 = Order(context: managedContext)
 
-//        let order = Order(context: managedContext)
-
+        let data = Data(context: managedContext)
+        data.setValue([120,100,90,80,63],forKeyPath: "avg_heartrate")
+        data.setValue([100,97.6,100.3,98.4,97.5],forKeyPath: "temperature")
+        data.setValue([3000,4000,3333,6000,2500],forKeyPath: "steps")
+        data.setValue([140,70,110,180,197],forKeyPath: "blood_sugar")
+        
         var conditions: [String]
         conditions = ["Diabetic","Depression"]
         
@@ -57,7 +61,7 @@ class ViewController: UIViewController {
         
         // 4
         do {
-//          try managedContext.save()
+          try managedContext.save()
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 class StudyTableViewController: UITableViewController {
 
     var studies = [Study]()
@@ -118,11 +119,11 @@ class StudyTableViewController: UITableViewController {
         })
         task.resume()
     }
-    func transferData(json : [String : Any], completionHandler: @escaping () -> Void) {
+    func transferData(json : [String : Any], address : String, completionHandler: @escaping () -> Void) {
             print("Refreshing")
-            let url = URL(string: "https://ee1cab2e.ngrok.io/orders")!;
+            let url = URL(string: "https://f7e896cf.ngrok.io/transferData")!;
             var request = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
             request.httpBody = jsonData
@@ -229,6 +230,7 @@ extension StudyTableViewController:StudyAcceptDelegate {
         var jsonObject = [String:Any]()
         let queries = orders[index].query
         let address = orders[index].serverAddress
+        print("GUMMO")
         guard let appDelegate =
              UIApplication.shared.delegate as? AppDelegate else {
                return
@@ -254,11 +256,13 @@ extension StudyTableViewController:StudyAcceptDelegate {
                let data = try managedContext.fetch(fetchRequest)
             var dataJSON = [String:[Any]]()
             for query in queries{
+                print(data[0].value(forKeyPath: query) as! [Any])
                 dataJSON[query] = data[0].value(forKeyPath: query) as! [Any]
             }
             jsonObject["data"] = dataJSON
-            transferData(json:jsonObject) { () in
-               // Do something with the data the completion handler returns
+            transferData(json:jsonObject,address:address) { () in
+               print("IM DONEEE")
+                // Do something with the data the completion handler returns
              }
             
             

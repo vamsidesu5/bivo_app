@@ -124,8 +124,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Accept"/>
                                             <connections>
-                                                <action selector="acceptedStudy:" destination="KhV-8w-FbJ" eventType="touchUpInside" id="Klp-vk-wE1"/>
-                                                <action selector="acceptedStudy:" destination="SVE-Mt-roB" eventType="touchUpInside" id="ghf-e9-Jfd"/>
+                                                <action selector="buttonPressed:" destination="SVE-Mt-roB" eventType="touchUpInside" id="2NC-8E-HyL"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -141,7 +140,7 @@
                         </prototypes>
                         <sections/>
                         <connections>
-                            <outlet property="dataSource" destination="KhV-8w-FbJ" id="g0c-GK-ZlO"/>
+                            <outlet property="dataSource" destination="KhV-8w-FbJ" id="PJp-BW-Q7e"/>
                             <outlet property="delegate" destination="KhV-8w-FbJ" id="ULX-oy-T0e"/>
                         </connections>
                     </tableView>
