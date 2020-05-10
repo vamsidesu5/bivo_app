@@ -51,9 +51,10 @@ class StudyTableViewController: UITableViewController {
                 let price = user[i].value(forKeyPath: "price") as? String//String(study.coin_val)
                 let bio = user[i].value(forKeyPath: "bio") as? String
                 let query = user[i].value(forKeyPath: "query") as? [String]
-                let audience = user[i].value(forKeyPath: "audience") as? [String: String]
+                let audience = user[i].value(forKeyPath: "audience") as? [String: [String]]
                 let serverAddress = user[i].value(forKeyPath: "serverAddress") as? String
-                orders.append(OrderModel(university: university!, research_type: research_type!, price: price!, audience: audience!, bio: bio!, serverAddress: serverAddress!, query: query!))
+                let orderId = ""
+                orders.append(OrderModel(university: university!, research_type: research_type!, price: price!, audience: audience!, bio: bio!, serverAddress: serverAddress!, query: query!, orderId: orderId))
                 
             }
         } catch let error as NSError {
@@ -61,9 +62,13 @@ class StudyTableViewController: UITableViewController {
         }
     }
     @objc func refresh() {
+        print("bitches")
+
         requestData() { (order_model) in
           // Do something with the data the completion handler returns
             self.orders = order_model.orders
+            print("bitches")
+
             DispatchQueue.main.async{
                 self.tableView.reloadData()
                 self.refresher.endRefreshing()
@@ -89,12 +94,25 @@ class StudyTableViewController: UITableViewController {
             print("Error with the response, unexpected status code: \(response)")
             return
           }
-            if let data = data,
-                let responseOrders = try? JSONDecoder().decode(OrderModels.self, from: data) {
-//                self.orders = responseOrders.orders;
-                let obj = OrderModels(orders: [OrderModel()])
-                completionHandler(responseOrders)
+            print("im donee mon1")
+            if let data = data {
+                do {
+                    
+                let responseOrders = try JSONDecoder().decode(OrderModels.self, from: data)
+                    let obj = OrderModels(orders: [OrderModel()])
+                    print("im donee mon")
+                    completionHandler(responseOrders)
+                } catch {
+                    print(error)
                 }
+            }
+//            if let data = data,
+//                let responseOrders = try? JSONDecoder().decode(OrderModels.self, from: data) {
+////                self.orders = responseOrders.orders;
+//
+//            } else {
+//                print("erroorrr")
+//            }
             
 
         })
