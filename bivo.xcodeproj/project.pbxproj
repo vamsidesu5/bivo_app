@@ -15,6 +15,8 @@
 		ACC22C4D246618E000C5DB53 /* StudyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC22C4C246618E000C5DB53 /* StudyTableViewCell.swift */; };
 		ACC22C4F2466275F00C5DB53 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC22C4E2466275F00C5DB53 /* Study.swift */; };
 		ACC22C512466298E00C5DB53 /* StudyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC22C502466298E00C5DB53 /* StudyTableViewController.swift */; };
+		E58654D2246697830082E342 /* bivo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E58654CD246669B00082E342 /* bivo.xcdatamodeld */; };
+		E58654D4246760220082E342 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654D3246760220082E342 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		ACC22C4C246618E000C5DB53 /* StudyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTableViewCell.swift; sourceTree = "<group>"; };
 		ACC22C4E2466275F00C5DB53 /* Study.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
 		ACC22C502466298E00C5DB53 /* StudyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTableViewController.swift; sourceTree = "<group>"; };
+		E58654CE246669B00082E342 /* bivo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bivo.xcdatamodel; sourceTree = "<group>"; };
+		E58654D3246760220082E342 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC22C302465EF6100C5DB53 /* AppDelegate.swift */,
+				E58654CD246669B00082E342 /* bivo.xcdatamodeld */,
 				ACC22C4E2466275F00C5DB53 /* Study.swift */,
 				ACC22C502466298E00C5DB53 /* StudyTableViewController.swift */,
 				ACC22C322465EF6100C5DB53 /* SceneDelegate.swift */,
@@ -69,6 +74,7 @@
 				ACC22C4C246618E000C5DB53 /* StudyTableViewCell.swift */,
 				ACC22C392465EF6200C5DB53 /* Assets.xcassets */,
 				ACC22C3E2465EF6200C5DB53 /* Info.plist */,
+				E58654D3246760220082E342 /* Order.swift */,
 			);
 			path = bivo;
 			sourceTree = "<group>";
@@ -144,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC22C512466298E00C5DB53 /* StudyTableViewController.swift in Sources */,
+				E58654D2246697830082E342 /* bivo.xcdatamodeld in Sources */,
+				E58654D4246760220082E342 /* Order.swift in Sources */,
 				ACC22C4D246618E000C5DB53 /* StudyTableViewCell.swift in Sources */,
 				ACC22C352465EF6100C5DB53 /* ViewController.swift in Sources */,
 				ACC22C312465EF6100C5DB53 /* AppDelegate.swift in Sources */,
@@ -336,6 +344,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E58654CD246669B00082E342 /* bivo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E58654CE246669B00082E342 /* bivo.xcdatamodel */,
+			);
+			currentVersion = E58654CE246669B00082E342 /* bivo.xcdatamodel */;
+			path = bivo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ACC22C252465EF6100C5DB53 /* Project object */;
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Data" representedClassName="Data" syncable="YES" codeGenerationType="class">
+        <attribute name="avg_heartrate" optional="YES" attributeType="Transformable"/>
+        <attribute name="blood_sugar" optional="YES" attributeType="Transformable"/>
+        <attribute name="steps" optional="YES" attributeType="Transformable"/>
+        <attribute name="temperature" optional="YES" attributeType="Transformable"/>
+    </entity>
+    <entity name="Demographics" representedClassName="Demographics" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="String"/>
+        <attribute name="condition" optional="YES" attributeType="Transformable"/>
+        <attribute name="ethnicity" optional="YES" attributeType="String"/>
+        <attribute name="sex" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="demographics" inverseEntity="User"/>
+    </entity>
+    <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
+        <attribute name="audience" optional="YES" attributeType="Transformable"/>
+        <attribute name="bio" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="query" optional="YES" attributeType="Transformable"/>
+        <attribute name="research_type" optional="YES" attributeType="String"/>
+        <attribute name="serverAddress" optional="YES" attributeType="String"/>
+        <attribute name="university" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="dataOrder" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <relationship name="dataOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="user" inverseEntity="Order"/>
+        <relationship name="demographics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Demographics" inverseName="user" inverseEntity="Demographics"/>
+        <relationship name="healthData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-160.5859375" positionY="-40.5703125" width="128" height="88"/>
+        <element name="Demographics" positionX="95.17578125" positionY="67.078125" width="128" height="118"/>
+        <element name="Data" positionX="-152.78515625" positionY="174.46875" width="128" height="103"/>
+        <element name="Order" positionX="60.24609375" positionY="226.07421875" width="128" height="163"/>
+    </elements>
+</model>

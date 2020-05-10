@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="TdD-Zl-3Ds">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="TdD-Zl-3Ds">
                                 <rect key="frame" x="87" y="101" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="47l-gz-g9h"/>
@@ -49,6 +49,7 @@
                         <constraints>
                             <constraint firstItem="hkf-mt-cXI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Ot-2A-Ghx"/>
                             <constraint firstItem="hkf-mt-cXI" firstAttribute="centerX" secondItem="TdD-Zl-3Ds" secondAttribute="centerX" id="Kxa-9k-uYY"/>
+                            <constraint firstItem="TdD-Zl-3Ds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="VQh-tM-fEa"/>
                             <constraint firstItem="hkf-mt-cXI" firstAttribute="centerX" secondItem="hTg-QP-vPm" secondAttribute="centerX" id="YqL-b8-401"/>
                             <constraint firstItem="hkf-mt-cXI" firstAttribute="top" secondItem="hTg-QP-vPm" secondAttribute="bottom" constant="8" id="nwd-MF-sTR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hkf-mt-cXI" secondAttribute="bottom" constant="46" id="t2h-oa-zrE"/>
@@ -65,17 +66,17 @@
             </objects>
             <point key="canvasLocation" x="139" y="134"/>
         </scene>
-        <!--Item 2-->
+        <!--Health Data-->
         <scene sceneID="cEc-3D-Rxw">
             <objects>
-                <viewController id="0fM-M7-b3V" sceneMemberID="viewController">
+                <viewController title="Health Data" id="0fM-M7-b3V" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AAs-ZI-0b4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="RD9-gx-hx8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="E6L-R7-3Bo"/>
+                    <tabBarItem key="tabBarItem" title="Health Data" id="E6L-R7-3Bo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mn-Yd-5Tj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,6 +135,7 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="KhV-8w-FbJ" id="g0c-GK-ZlO"/>
                             <outlet property="delegate" destination="KhV-8w-FbJ" id="ULX-oy-T0e"/>
@@ -144,22 +146,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-UF-4N2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2163.768115942029" y="-752.00892857142856"/>
-        </scene>
-        <!--StudyViewController-->
-        <scene sceneID="CrA-AI-kwH">
-            <objects>
-                <viewController title="StudyViewController" id="A70-td-bff" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FkH-nE-6Yp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6X7-4Y-ohU"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 3" id="NwX-aS-dJ1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u7p-Rl-4j5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2970" y="-547"/>
         </scene>
         <!--HomePageTabController-->
         <scene sceneID="tFu-Ex-lj9">
@@ -173,13 +159,29 @@
                     </tabBar>
                     <connections>
                         <segue destination="KhV-8w-FbJ" kind="relationship" relationship="viewControllers" id="R2I-cG-VnV"/>
-                        <segue destination="A70-td-bff" kind="relationship" relationship="viewControllers" id="dcQ-mN-k2y"/>
                         <segue destination="0fM-M7-b3V" kind="relationship" relationship="viewControllers" id="zIa-g7-cLp"/>
+                        <segue destination="mUr-0B-i5C" kind="relationship" relationship="viewControllers" id="rYk-I3-gds"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vE-5t-3Zh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1451" y="131"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="okd-3a-BKj">
+            <objects>
+                <viewController id="mUr-0B-i5C" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cci-Ai-A9C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Zqh-Qg-QSr"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Wallet" id="wOv-sM-yJU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2c8-H8-YbX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3739" y="-382"/>
         </scene>
     </scenes>
     <resources>
