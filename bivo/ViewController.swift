@@ -24,9 +24,9 @@ class ViewController: UIViewController {
         let managedContext =
           appDelegate.persistentContainer.viewContext
         // 2
-        let person = Demographics(context: managedContext)
-        let order = Order(context: managedContext)
-        let order2 = Order(context: managedContext)
+//        let person = Demographics(context: managedContext)
+//        let order = Order(context: managedContext)
+//        let order2 = Order(context: managedContext)
 
 //        let order = Order(context: managedContext)
 
@@ -34,30 +34,30 @@ class ViewController: UIViewController {
         conditions = ["Diabetic","Depression"]
         
         // 3
-        person.setValue("13-20", forKeyPath: "age")
-        person.setValue("Male", forKeyPath: "sex")
-        person.setValue("Asian", forKeyPath: "ethnicity")
-        person.setValue(conditions, forKeyPath: "condition")
-        
-        order.setValue(["sex": "male"], forKeyPath: "audience")
-        order.setValue(["temperature"], forKeyPath: "query")
-        order.setValue("Emory University", forKeyPath: "university")
-        order.setValue("COVID-19", forKeyPath: "research_type")
-        order.setValue("12", forKeyPath: "price")
-        order.setValue("This is a COVID-19 study you dumb bitch", forKeyPath: "bio")
-        order.setValue("http://localhost:3000/transferData/", forKeyPath: "serverAddress")
-
-        order2.setValue(["sex": "female"], forKeyPath: "audience")
-        order2.setValue(["steps"], forKeyPath: "query")
-        order2.setValue("Georgia Tech", forKeyPath: "university")
-        order2.setValue("COVID-20", forKeyPath: "research_type")
-        order2.setValue("14", forKeyPath: "price")
-        order2.setValue("This is a COVID-19 study you dumb bitch", forKeyPath: "bio")
-        order2.setValue("http://localhost:3000/transferData/", forKeyPath: "serverAddress")
+//        person.setValue("13-20", forKeyPath: "age")
+//        person.setValue("Male", forKeyPath: "sex")
+//        person.setValue("Asian", forKeyPath: "ethnicity")
+//        person.setValue(conditions, forKeyPath: "condition")
+//
+//        order.setValue(["sex": "male"], forKeyPath: "audience")
+//        order.setValue(["temperature"], forKeyPath: "query")
+//        order.setValue("Emory University", forKeyPath: "university")
+//        order.setValue("COVID-19", forKeyPath: "research_type")
+//        order.setValue("12", forKeyPath: "price")
+//        order.setValue("This is a COVID-19 study you dumb bitch", forKeyPath: "bio")
+//        order.setValue("http://localhost:3000/transferData/", forKeyPath: "serverAddress")
+//
+//        order2.setValue(["sex": "female"], forKeyPath: "audience")
+//        order2.setValue(["steps"], forKeyPath: "query")
+//        order2.setValue("Georgia Tech", forKeyPath: "university")
+//        order2.setValue("COVID-20", forKeyPath: "research_type")
+//        order2.setValue("14", forKeyPath: "price")
+//        order2.setValue("This is a COVID-19 study you dumb bitch", forKeyPath: "bio")
+//        order2.setValue("http://localhost:3000/transferData/", forKeyPath: "serverAddress")
         
         // 4
         do {
-          try managedContext.save()
+//          try managedContext.save()
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }

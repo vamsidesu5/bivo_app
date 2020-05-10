@@ -16,6 +16,7 @@
     <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
         <attribute name="audience" optional="YES" attributeType="Transformable"/>
         <attribute name="bio" optional="YES" attributeType="String"/>
+        <attribute name="orderId" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="String"/>
         <attribute name="query" optional="YES" attributeType="Transformable"/>
         <attribute name="research_type" optional="YES" attributeType="String"/>
@@ -32,6 +33,6 @@
         <element name="User" positionX="-160.5859375" positionY="-40.5703125" width="128" height="88"/>
         <element name="Demographics" positionX="95.17578125" positionY="67.078125" width="128" height="118"/>
         <element name="Data" positionX="-152.78515625" positionY="174.46875" width="128" height="103"/>
-        <element name="Order" positionX="60.24609375" positionY="226.07421875" width="128" height="163"/>
+        <element name="Order" positionX="60.24609375" positionY="226.07421875" width="128" height="178"/>
     </elements>
 </model>

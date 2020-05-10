@@ -11,13 +11,14 @@ import Foundation
     var university : String;
     var research_type : String;
     var price : String;
-    var audience: [String: String];
+    var audience: [String: [String]];
     var bio: String;
     var serverAddress: String;
     var query: [String];
+    var orderId: String;
     //audience, bioo, price, query, research_typee, serverAddress, university
     init(university : String, research_type : String,
-         price : String, audience: [String: String], bio: String, serverAddress: String, query: [String]){
+         price : String, audience: [String: [String]], bio: String, serverAddress: String, query: [String], orderId: String){
         self.university = university;
         self.research_type = research_type;
         self.price = price;
@@ -25,15 +26,17 @@ import Foundation
         self.bio = bio;
         self.serverAddress = serverAddress;
         self.query = query;
+        self.orderId = orderId;
     }
     override init() {
         self.university = "";
         self.research_type = "";
         self.price = "";
-        self.audience = ["":""];
+        self.audience = ["":[""]];
         self.bio = "";
         self.serverAddress = "";
         self.query = [""];
+        self.orderId = "";
     }
     
 }
