@@ -118,6 +118,37 @@ class StudyTableViewController: UITableViewController {
         })
         task.resume()
     }
+    func transferData(json : [String : Any], completionHandler: @escaping () -> Void) {
+            print("Refreshing")
+            let url = URL(string: "https://ee1cab2e.ngrok.io/orders")!;
+            var request = URLRequest(url: url)
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            request.httpBody = jsonData
+            let task = URLSession.shared.dataTask(with: url , completionHandler: { (data, response, error) in
+              if let error = error {
+                print("Error with transferring data: \(error)")
+                return
+              }
+              print("made request...")
+                print()
+              print("yuh request...")
+
+              guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                print("Error with the response, unexpected status code: \(response)")
+                return
+              }
+                    
+    //                self.orders = responseOrders.orders;
+                    
+                    completionHandler()
+                
+
+            })
+            task.resume()
+        }
 
     // MARK: - Table view data source
 
@@ -139,12 +170,14 @@ class StudyTableViewController: UITableViewController {
         cell.university!.text = orders[indexPath.item].university as? String
         cell.research_type!.text = orders[indexPath.item].research_type as? String
         cell.coin_value!.text = orders[indexPath.item].price as? String//String(study.coin_val)
+        cell.index = indexPath.item
         // Configure the cell...
-
+        cell.delegate = self
+        
         return cell
     }
     /*
-    // Override to support conditional editing of the table view.
+     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
@@ -191,6 +224,61 @@ class StudyTableViewController: UITableViewController {
 
 }
 
+extension StudyTableViewController:StudyAcceptDelegate {
+    func didTapAcceptStudy(index:Int){
+        var jsonObject = [String:Any]()
+        let queries = orders[index].query
+        let address = orders[index].serverAddress
+        guard let appDelegate =
+             UIApplication.shared.delegate as? AppDelegate else {
+               return
+           }
+           
+           let managedContext =
+             appDelegate.persistentContainer.viewContext
+           
+           //2
+           let fetchRequest =
+             NSFetchRequest<NSManagedObject>(entityName: "Data")
+           /*
+            var university : String;
+               var research_type : String;
+               var price : String;
+               var audience: [String];
+               var bio: String;
+               var serverAddress: String;
+               var query: [String];
+            */
+           //3
+           do {
+               let data = try managedContext.fetch(fetchRequest)
+            var dataJSON = [String:[Any]]()
+            for query in queries{
+                dataJSON[query] = data[0].value(forKeyPath: query) as! [Any]
+            }
+            jsonObject["data"] = dataJSON
+            transferData(json:jsonObject) { () in
+               // Do something with the data the completion handler returns
+             }
+            
+            
+                
+//                   let university = user[i].value(forKeyPath: "university") as? String
+//                   let research_type = user[i].value(forKeyPath: "research_type") as? String
+//                   let price = user[i].value(forKeyPath: "price") as? String//String(study.coin_val)
+//                   let bio = user[i].value(forKeyPath: "bio") as? String
+//                   let query = user[i].value(forKeyPath: "query") as? [String]
+//                   let audience = user[i].value(forKeyPath: "audience") as? [String: String]
+//                   let serverAddress = user[i].value(forKeyPath: "serverAddress") as? String
+//                   orders.append(OrderModel(university: university!, research_type: research_type!, price: price!, audience: audience!, bio: bio!, serverAddress: serverAddress!, query: query!))
+                   
+           } catch let error as NSError {
+             print("Could not fetch. \(error), \(error.userInfo)")
+           }
+        
+    }
+}
+
 extension NSManagedObject {
   func toJSON() -> String? {
     let keys = Array(self.entity.attributesByName.keys)
@@ -203,4 +291,16 @@ extension NSManagedObject {
     catch{}
     return nil
   }
+}
+
+
+extension CharacterSet {
+    static let urlQueryValueAllowed: CharacterSet = {
+        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimitersToEncode = "!$&'()*+,;="
+
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        return allowed
+    }()
 }
